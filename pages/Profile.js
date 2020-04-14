@@ -1,14 +1,15 @@
-import TextField from '@material-ui/core/TextField';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import Router from 'next/router';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import FormDialog from './Dialog'
+import Box from '@material-ui/core/Box';
 import { useState } from 'react';
+import Typography from '@material-ui/core/Typography';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import FormDialog from './Dialog'
 
 
 
@@ -31,22 +32,24 @@ const useStyles = makeStyles((theme) => ({
     },
     rootmain: {
         flexGrow: 1,
+    },
+    typo: {
+        flexDirection: 'row'
     }
 
   }));
 
  
 
-  const doEdit =() =>{
-    setIsopen(!isopen);
-}
+  const DialogOpener = () => {
+      return <FormDialog/>
+  }
+
 
 
  function Profile() {
     const classes = useStyles();
-    const [isopen,setIsopen] = useState(false);
-
-
+    
     return(
             <div className = {classes.rootmain}>
                  <Card className={classes.rootcard}>
@@ -58,24 +61,31 @@ const useStyles = makeStyles((theme) => ({
                     <Grid container spacing={3}>
                         
                         <Grid item xs={6}>
+
                         <Paper className={classes.paper}>
-                         <form className={classes.root}>
-                            <TextField id="outlined-basic" label="username" variant="standard" value= {localStorage.getItem('regUser')}/>
-                            <TextField id="outlined-basic" label="password" variant="standard" value= {localStorage.getItem('regPass')}/>
-                            <TextField id="outlined-basic" label="email" variant="standard" value= {localStorage.getItem('regEmail')}/>
-                            <TextField id="outlined-basic" label="phone number" variant="standard" value= {localStorage.getItem('regPhn')}/>
-                         </form>
+                            <Typography variant="subtitle1">
+                                Username : {localStorage.getItem('regUser')}<Box><Button onclick={DialogOpener}><ArrowDropDownIcon /></Button></Box>
+                            </Typography>
+
+                            <Typography variant="subtitle1">
+                                Password : {localStorage.getItem('regPass')}<Box><Button onclick={DialogOpener}><ArrowDropDownIcon/></Button></Box>
+                            </Typography>
+
+                            <Typography variant="subtitle1">
+                                Phone number : {localStorage.getItem('regPhn')}<Box><Button onclick={DialogOpener}><ArrowDropDownIcon/></Button></Box>
+                            </Typography>
+
+                            <Typography variant="subtitle1">
+                                Email : {localStorage.getItem('regEmail')}<Box><Button onclick={DialogOpener}><ArrowDropDownIcon/></Button></Box>
+                            </Typography>
                         </Paper>
+
                         </Grid>
                       
                     </Grid>
 
                     </CardContent>
-
-                    <CardActions>
-                        <Button>Edit</Button>
-                    </CardActions>
-                    <FormDialog  isopen={isopen} onEdit={doEdit}/>
+                    
                 </Card>
 
                
