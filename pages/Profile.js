@@ -65,24 +65,34 @@ const useStyles = makeStyles((theme) => ({
 
                         <Box m ={3}>
                         <Paper className={classes.paper} >
-                            <Box className={classes.Box}>
+                            <Box display={"flex"}>
                             <Typography variant="subtitle1" >
                                 Username : {localStorage.getItem('regUser')}
-                            </Typography><FormDialog name="Username " />
+                            </Typography>
+                            <FormDialog name="Username " />
                             </Box>
                             
-
+                            <Box display={"flex"}>
                             <Typography variant="subtitle1">
-                                Password : {localStorage.getItem('regPass')}<FormDialog name="Password "/>
+                                Password : {localStorage.getItem('regPass')}
                             </Typography>
-
+                            <FormDialog name="Password "/>
+                            </Box>
+                           
+                            <Box display={"flex"}>
                             <Typography variant="subtitle1">
-                                Phone number : {localStorage.getItem('regPhn')}<FormDialog name="Phone number "/>
+                                Phone number : {localStorage.getItem('regPhn')}
                             </Typography>
-
+                            <FormDialog name="Phone number "/>
+                            </Box>
+                           
+                            <Box display={"flex"}>
                             <Typography variant="subtitle1">
-                                Email : {localStorage.getItem('regEmail')}<FormDialog name="Email "/>
+                                Email : {localStorage.getItem('regEmail')}
                             </Typography>
+                            <FormDialog name="Email "/>
+                            </Box>
+                            
                         </Paper>
                         </Box>
                         

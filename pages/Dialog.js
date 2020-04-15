@@ -67,7 +67,7 @@ export default function FormDialog(props) {
           <DialogContentText>
             Change your Username here
           </DialogContentText>
-          <TextField
+          {name === "Username" && <TextField
             autoFocus
             margin="dense"
             id="name"
@@ -75,9 +75,9 @@ export default function FormDialog(props) {
             type="email"
             fullWidth
             onChange = {handleUser}
-          />
+          />}
 
-          <TextField
+          {name === "Email" && <TextField
             autoFocus
             margin="dense"
             id="name"
@@ -85,9 +85,9 @@ export default function FormDialog(props) {
             type="email"
             fullWidth
             onChange = {handleEmail}
-          />
+          />}
 
-             <TextField
+             {name === "Password" && <TextField
             autoFocus
             margin="dense"
             id="name"
@@ -95,9 +95,9 @@ export default function FormDialog(props) {
             type="email"
             fullWidth
             onChange = {handlePass}
-          />
+          />}
 
-             <TextField
+             {name === "Phone Number" && <TextField
             autoFocus
             margin="dense"
             id="name"
@@ -105,7 +105,7 @@ export default function FormDialog(props) {
             type="email"
             fullWidth
             onChange = {handlePhn}
-          />
+          />}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
