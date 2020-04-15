@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
       display: "flex",
       flexDirection: "column",
       padding: theme.spacing(2),
-      textAlign: 'center',
+      justifyContent: 'center',
      
     },
     rootcard: {
@@ -29,6 +29,14 @@ const useStyles = makeStyles((theme) => ({
     },
     rootmain: {
         flexGrow: 1,
+        '& .MuiTextField-root': {
+            margin: theme.spacing(1),
+            width: '20ch',
+          },
+      display: "flex",
+      flexDirection: "column",
+      padding: theme.spacing(15),
+      justifyContent: 'center',
     }
 
   }));

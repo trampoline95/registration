@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+
 import FormDialog from './Dialog'
 
 
@@ -32,19 +32,20 @@ const useStyles = makeStyles((theme) => ({
     },
     rootmain: {
         flexGrow: 1,
+        '& .MuiTextField-root': {
+            margin: theme.spacing(1),
+            width: '25ch',
+          },
+      display: "flex",
+      flexDirection: "column",
+      padding: theme.spacing(15),
+      justifyContent: 'center',
     },
     typo: {
         flexDirection: 'row'
-    }
+    },
 
   }));
-
- 
-
-  const DialogOpener = () => {
-      return <FormDialog/>
-  }
-
 
 
  function Profile() {
@@ -62,29 +63,36 @@ const useStyles = makeStyles((theme) => ({
                         
                         <Grid item xs={6}>
 
-                        <Paper className={classes.paper}>
+                        <Box m ={3}>
+                        <Paper className={classes.paper} >
+                            <Box className={classes.Box}>
+                            <Typography variant="subtitle1" >
+                                Username : {localStorage.getItem('regUser')}
+                            </Typography><FormDialog name="Username " />
+                            </Box>
+                            
+
                             <Typography variant="subtitle1">
-                                Username : {localStorage.getItem('regUser')}<Box><Button onclick={DialogOpener}><ArrowDropDownIcon /></Button></Box>
+                                Password : {localStorage.getItem('regPass')}<FormDialog name="Password "/>
                             </Typography>
 
                             <Typography variant="subtitle1">
-                                Password : {localStorage.getItem('regPass')}<Box><Button onclick={DialogOpener}><ArrowDropDownIcon/></Button></Box>
+                                Phone number : {localStorage.getItem('regPhn')}<FormDialog name="Phone number "/>
                             </Typography>
 
                             <Typography variant="subtitle1">
-                                Phone number : {localStorage.getItem('regPhn')}<Box><Button onclick={DialogOpener}><ArrowDropDownIcon/></Button></Box>
-                            </Typography>
-
-                            <Typography variant="subtitle1">
-                                Email : {localStorage.getItem('regEmail')}<Box><Button onclick={DialogOpener}><ArrowDropDownIcon/></Button></Box>
+                                Email : {localStorage.getItem('regEmail')}<FormDialog name="Email "/>
                             </Typography>
                         </Paper>
+                        </Box>
+                        
 
                         </Grid>
                       
                     </Grid>
 
                     </CardContent>
+                    
                     
                 </Card>
 
