@@ -8,36 +8,28 @@ import { useState } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Router from 'next/router'
+import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
+
 
 
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: '25ch',
-          },
-      display: "flex",
-      flexDirection: "column",
-      padding: theme.spacing(2),
-      justifyContent: 'center',
-     
-    },
-    rootcard: {
-        justifyContent: 'center'
-       
-    },
-    rootmain: {
-        flexGrow: 1,
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: '20ch',
-          },
-      display: "flex",
-      flexDirection: "column",
-      padding: theme.spacing(15),
-      justifyContent: 'center',
-    }
+    paper: {
+        marginTop: theme.spacing(8),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      },
+      form: {
+        width: '100%', 
+        marginTop: theme.spacing(3),
+      },
+      submit: {
+        margin: theme.spacing(3, 0, 2),
+      },
 
   }));
 
@@ -60,38 +52,89 @@ const useStyles = makeStyles((theme) => ({
 
   
     return(
-            <div className = {classes.rootmain}>
-                 <Card className={classes.rootcard}>
+        <Container component="main" maxWidth="xs">
+            <CssBaseline />
+                <div className = {classes.paper}>
+                <Typography component="h1" variant="h5">
+                    Register
+                </Typography>
 
-                    <CardContent>
 
-                 
 
-                    <Grid container spacing={3}>
-                        
-                        <Grid item xs={6}>
-                        <Paper className={classes.paper}>
-                         <form className={classes.root}>
-                            <TextField id="outlined-basic" label="username" variant="standard" onChange = {(event) => setUser(event.target.value)} style={{padding: 10}}/>
-                            <TextField id="outlined-basic" label="password" variant="standard" onChange = {(event) => setPass(event.target.value)} style={{padding: 10}}/>
-                            <TextField id="outlined-basic" label="email" variant="standard" onChange = {(event) => setEmail(event.target.value)} style={{padding: 10}}/>
-                            <TextField id="outlined-basic" label="phone number" variant="standard" onChange = {(event) => setPhn(event.target.value)} style={{pading: 10}}/>
-                         </form>
-                        </Paper>
+                <form className={classes.form} noValidate>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12}>
+                        <TextField
+                            autoComplete="fname"
+                            name="UserName"
+                            variant="outlined"
+                            required
+                            fullWidth
+                            id="userName"
+                            label="User Name"
+                            autoFocus
+                            onChange = {(event) => setUser(event.target.value)}
+                        />
                         </Grid>
-                      
-                    </Grid>
 
-                    </CardContent>
-
-                    <CardActions>
-                        <Button onClick ={storeData}>Register</Button>
-                    </CardActions>
-
-                </Card>
+                        <Grid item xs={12}>
+                        <TextField
+                            variant="outlined"
+                            required
+                            fullWidth
+                            id="email"
+                            label="Password"
+                            name="password"
+                            autoComplete=""
+                            onChange = {(event) => setPass(event.target.value)} 
+                        />
+                        </Grid>
+                        <Grid item xs={12}>
+                        <TextField
+                            variant="outlined"
+                            required
+                            fullWidth
+                            name="Email"
+                            label="Email"
+                            type="Email"
+                            id="Email"
+                            autoComplete=""
+                            onChange = {(event) => setEmail(event.target.value)}
+                        />
+                        </Grid>
+                        <Grid item xs={12}>
+                        <TextField
+                            variant="outlined"
+                            required
+                            fullWidth
+                            name="Phn"
+                            label="Phone"
+                            type="Phone"
+                            id="Phone"
+                            autoComplete=""
+                            onChange = {(event) => setPhn(event.target.value)}
+                        />
+                        </Grid>
+                    
+                         </Grid>
+                        <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
+                        onClick ={storeData}
+                        >
+                        Register
+                        </Button>
+                       
+                   
+                </form>
 
                
             </div>
+        </Container>
+            
 
     );
 

@@ -6,108 +6,88 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
-
+import Divider from '@material-ui/core/Divider';
 import FormDialog from './Dialog'
-
+import Container from '@material-ui/core/Container';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: '25ch',
-          },
-      display: "flex",
-      flexDirection: "column",
-      padding: theme.spacing(2),
-      textAlign: 'center',
-     
-    },
-    rootcard: {
-        justifyContent: 'center'
-       
-    },
-    rootmain: {
-        flexGrow: 1,
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: '25ch',
-          },
-      display: "flex",
-      flexDirection: "column",
-      padding: theme.spacing(15),
-      justifyContent: 'center',
-    },
-    typo: {
-        flexDirection: 'row'
-    },
-
+    paper: {
+        marginTop: theme.spacing(8),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      },
+      form: {
+        width: '100%', 
+        marginTop: theme.spacing(3),
+      },
   }));
+
+  const [User, setUser] = useState("");
+  const [Pass, setPass] = useState("")
+  const [Phn, setPhn] = useState("")
+  const [Email, setEmail] = useState("")
 
 
  function Profile() {
     const classes = useStyles();
+
+    useEffect = () => {
+        const User = setUser(localStorage.getItem('regUser'),[])
+        const Pass = setPass(localStorage.getItem('regPass'),[])
+        const Phn = setPhn(localStorage.getItem('regPhn'),[])
+        const Email = setEmail(localStorage.getItem('regEmail'),[])
+    }
     
     return(
-            <div className = {classes.rootmain}>
-                 <Card className={classes.rootcard}>
+        <Container component="main" maxWidth="xs">
+            <CssBaseline />
+                <div className = {classes.paper}>
+                <Typography component="h1" variant="h5">
+                    Profile Details
+                </Typography>
 
-                    <CardContent>
-
-                 
-
-                    <Grid container spacing={3}>
-                        
-                        <Grid item xs={6}>
-
-                        <Box m ={3}>
-                        <Paper className={classes.paper} >
-                            <Box display={"flex"}>
-                            <Typography variant="subtitle1" >
-                                Username : {localStorage.getItem('regUser')}
-                            </Typography>
+                <form className={classes.form} noValidate>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12}>
+                        <Typography >
+                            Username : {userData}
+                        </Typography>
                             <FormDialog name="Username " />
-                            </Box>
-                            
-                            <Box display={"flex"}>
-                            <Typography variant="subtitle1">
-                                Password : {localStorage.getItem('regPass')}
-                            </Typography>
-                            <FormDialog name="Password "/>
-                            </Box>
-                           
-                            <Box display={"flex"}>
-                            <Typography variant="subtitle1">
-                                Phone number : {localStorage.getItem('regPhn')}
-                            </Typography>
-                            <FormDialog name="Phone number "/>
-                            </Box>
-                           
-                            <Box display={"flex"}>
-                            <Typography variant="subtitle1">
-                                Email : {localStorage.getItem('regEmail')}
-                            </Typography>
-                            <FormDialog name="Email "/>
-                            </Box>
-                            
-                        </Paper>
-                        </Box>
-                        
-
                         </Grid>
-                      
-                    </Grid>
 
-                    </CardContent>
-                    
-                    
-                </Card>
+                        <Grid item xs={12}>
+                        <Typography >
+                            Password : {passData}
+                        </Typography>
+                            <FormDialog name="Password "/>
+                         </Grid>
+
+                        <Grid item xs={12}>
+                        <Typography >
+                            Phone number : {phnData}
+                        </Typography>
+                            <FormDialog name="Phone number "/>
+                        </Grid>
+
+                        <Grid item xs={12}>
+                        <Typography >
+                            Email : {emailData}
+                        </Typography>
+                            <FormDialog name="Email "/>
+                        </Grid>
+                 </Grid>
+                 </form>
 
                
             </div>
+        </Container>
+            
 
     );
 
